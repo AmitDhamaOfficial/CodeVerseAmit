@@ -12,6 +12,11 @@ class Main{
     map.put("China",45);
     map.put("India",110);
 
+    
+    System.out.println(map);
+
+
+    
     // contains: O(1)
     // nmap.containsKey("India"); error 1
 
@@ -25,5 +30,7 @@ class Main{
 
 
     System.out.println(map.get("China")); // default : null -> when not exist remove already.
+
+    
    }
 }

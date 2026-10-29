@@ -1,4 +1,4 @@
-import java.util.LinkedList;
+import java.util.*;
 
 class LinkedList{
   Node head;
@@ -10,34 +10,45 @@ class LinkedList{
     this.head = null;
     this.tail = null;
     this.size = 0;
-  }
 
-  public void addLast(int val){
+//   public void addLast(int val){
+//     Node newNode = new Node(val);
+
+//     if(head == null){
+//       head = newNode;
+//       tail = newNode;
+//     } else{
+//       tail.next = newNode;
+//       tail = newNode;
+//     }
+
+//     this.size++;
+//   }
+// }
+
+
+// Add a value at start in LinkedList
+  public void addFirst(int val){
     Node newNode = new Node(val);
+  }
 
     if(head == null){
       head = newNode;
       tail = newNode;
     } else{
-      tail.next = newNode;
-      tail = newNode;
+      newNode.next = head;
+      head = newNode;
     }
 
+    
     this.size++;
   }
 }
 
-
-
-class Main{
   public static void main(String[] args){
     LinkedList ll = new LinkedList();
 
-    ll.addLast(5);
-    ll.addLast(10);
-    ll.addLast(15);
-    ll.addLast(20);
+    ll.addFirst(5);
 
     ll.displayList();
   }
-}
