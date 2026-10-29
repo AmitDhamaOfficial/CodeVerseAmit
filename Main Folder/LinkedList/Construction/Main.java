@@ -1,54 +1,85 @@
-import java.util.*;
-
-class LinkedList{
-  Node head;
-  Node tail;
-  int size;
 
 
-  public LinkedList(){
-    this.head = null;
-    this.tail = null;
-    this.size = 0;
-
-//   public void addLast(int val){
-//     Node newNode = new Node(val);
-
-//     if(head == null){
-//       head = newNode;
-//       tail = newNode;
-//     } else{
-//       tail.next = newNode;
-//       tail = newNode;
-//     }
-
-//     this.size++;
-//   }
-// }
+class Node{
+  int data;
+  Node next;
 
 
-// Add a value at start in LinkedList
-  public void addFirst(int val){
-    Node newNode = new Node(val);
-  }
-
-    if(head == null){
-      head = newNode;
-      tail = newNode;
-    } else{
-      newNode.next = head;
-      head = newNode;
-    }
-
-    
-    this.size++;
+  public Node(int data){
+    this.data = data;
   }
 }
 
+
+class LinkedList {
+
+    Node head;
+    Node tail;
+    int size;
+
+    public LinkedList() {
+        head = null;
+        tail = null;
+        size = 0;
+    }
+
+    public void addLast(int value) {
+        Node newNode = new Node(value);
+
+        if(head == null) {
+            head = newNode;
+            tail = newNode;
+        } else {
+            tail.next = newNode;
+            tail = newNode;
+        }
+
+        size++;
+    }
+
+    public void display() {
+        Node temp = head;
+
+        while(temp != null) {
+            System.out.print(temp.data + " ");
+            temp = temp.next;
+        }
+
+        System.out.println();
+    }
+
+    public void reverseLinkedList() {
+        Node prev = null;
+        Node curr = head;
+
+        while(curr != null) {
+            Node next = curr.next;
+            curr.next = prev;
+
+            prev = curr;
+            curr = next;
+        }
+
+        tail = head;
+        head = prev;
+    }
+}
+
+class Main{
   public static void main(String[] args){
+
     LinkedList ll = new LinkedList();
 
-    ll.addFirst(5);
+    ll.addLast(5);
+    ll.addLast(10);
+    ll.addLast(15);
+    ll.addLast(20);
+    ll.addLast(25);
 
-    ll.displayList();
+    ll.display();
+
+    ll.reverseLinkedList();
+
+    ll.display();
   }
+}
