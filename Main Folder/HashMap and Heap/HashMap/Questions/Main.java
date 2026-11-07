@@ -1,56 +1,54 @@
 import java.util.HashMap;
 
-class Main{
+class Main {
 
-  // https://www.geeksforgeeks.org/problems/maximum-occuring-character-1587115620/1
-    public static char getMaxOccuringChar(String s) {
-        // code here
-        HashMap <Character,Integer> freMap = new HashMap<>();
-        
-        for(int i=0;i<s.length();i++){
-            char ch = s.charAt(i);
-            
-            if(freMap.containsKey(ch) == false){ // means check currentchar is not existing, is it??
-                freMap.put(ch,1); // then puts/add by 1
-            }else{ // if char already existing in HashMap then :
-                int olderFreMap = freMap.get(ch);
-                freMap.put(ch,olderFreMap+1); // add the freMap Integer value by 1.
-            }
-        }
-        
-        
-        char ans = '\0'; // initialized with null
-        int maxFre = 0;
-        
-        for(int i=0;i<s.length();i++){
-            char ch = s.charAt(i);
-            
-            if(freMap.get(ch) > maxFre){
-                ans = ch;
-                maxFre = freMap.get(ch);
-            }else if(freMap.get(ch) == maxFre && ans > ch){
-                ans = ch; // replacing with lexicographically smaller character
-            }
-        }
-        
-        return ans;
+  public static char testByAmit(String s){
+    HashMap <Character,Integer> hm = new HashMap<>();
+
+    for(int i=0;i<s.length();i++){
+      char ch = s.charAt(i);
+
+      if(hm.containsKey(ch) == false){
+        hm.put(ch,1);
+      } else{
+        int oldHm = hm.get(ch);
+        hm.put(ch, oldHm+1);
+      }
+    }
+
+
+    char ans = '\0';
+    int maxNumber = 0;
+
+    for(int i=0;i<s.length(); i++){
+      char ch = s.charAt(i);
+
+      if(hm.get(ch) > maxNumber){
+        ans = ch;
+        maxNumber = hm.get(ch);
+      } else if(hm.get(ch) == maxNumber && ans > ch){
+        ans = ch;
+      }
+    }
+
+    return ans;
   }
 
-// 3005. Count Elements With Maximum Frequency
-// https://leetcode.com/problems/count-elements-with-maximum-frequency/description/
-// Count elements with maximum frequency
+  // Count elements with maximum frequency
+  // https://leetcode.com/problems/count-elements-with-maximum-frequency/description/
+
+  
 
 
-// // Leetcode 349 (Intersection of two arrays)
+
+
+
+
   public static void main(String[] args){
 
-  // char result1 = getMaxOccuringChar("testsample");
-// int result2 = maxFrequencyElements();
+   char ans1 = testByAmit("testsample");
 
-
-
-  // System.out.println(result1);
-// System.out.println(result2);
+    System.out.println(ans1);
 
   }
 }

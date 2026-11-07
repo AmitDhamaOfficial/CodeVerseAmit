@@ -125,7 +125,33 @@ class Main {
  
  
 
-// next question
+// 204 : Next Smaller on left
+// https://www.geeksforgeeks.org/problems/smallest-number-on-left3403/1
+class Solution {
+    public static ArrayList<Integer> prevSmaller(int[] arr) {
+
+        ArrayList<Integer> ans = new ArrayList<>();
+
+        for (int i = 0; i < arr.length; i++) {
+
+            int prev = -1;
+
+            for (int j = i - 1; j >= 0; j--) {
+
+                if (arr[j] < arr[i]) {
+                    prev = arr[j];
+                    break;
+                }
+            }
+
+            ans.add(prev);
+        }
+
+        return ans;
+    }
+}
+
+
 
 
 
